@@ -10,9 +10,20 @@ var bot = linebot({
 
 console.log('start');
 
-
-
 console.log('end');
+
+
+
+//訊息事件
+bot.on('message', function (event) {
+    console.log('==================message-訊息事件');
+    console.log('解析收到的event:');
+    console.log('type==>', event.type);
+    console.log('replyToken==>', event.replyToken);
+    console.log('userId==>', event.source.userId);
+    console.log('==================');
+});
+
 
 const app = express();
 const linebotParser = bot.parser();
