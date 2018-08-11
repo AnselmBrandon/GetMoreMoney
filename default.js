@@ -4,13 +4,12 @@ var express = require('express');
 
 var bot = linebot({
     channelId: '1585073032',
-    channelSecret: 'e0acb451ddc1d0b89f5e051f78f52739',
+    channelSecret: 'e0acb451ddc1d0b89f5e051f78f52739', 
     channelAccessToken: 'llr0iuNKZNnNvDXKQ5SpBGUVSCGM1FxOwEWKFAbiX45ZbKYZVzbLt67TcDwhgjISuTvIdMstBWVpfADfORx7cT0/97Tkx5lmHY2z+77az/3lc371kL27XpD5T9f8Vr+PyLBY4fHmuHrpx8lRyl/HOgdB04t89/1O/w1cDnyilFU='
 });
 
 console.log('start');
 
-console.log('end');
 
 
 
@@ -30,5 +29,5 @@ const linebotParser = bot.parser();
 app.post('/', linebotParser);
 var server = app.listen(process.env.PORT || 8080, function () {
     var port = server.address().port;
-    console.log("App now running on port", port);
+    console.log("網路已啟動==>", port);
 });
