@@ -5,5 +5,12 @@
   "main": "server.js",
   "author": {
     "name": "hi199"
+  },
+  "dependencies": {
+    "express": "^4.16.3",
+    "google-auth-library": "^1.6.1",
+    "googleapis": "^32.0.0",
+    "linebot": "^1.4.1",
+    "mongodb": "^3.1.1"
   }
 }
