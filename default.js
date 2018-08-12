@@ -27,16 +27,16 @@ bot.on('message', function (event) {
         altText: 'this is a confirm template',
         template: {
             type: 'confirm',
-            text: 'Are you sure?',
+            text: '連結人工智慧測試網站?',
             actions: [{
                 type: 'message',
-                label: 'Yes',
-                text: 'yes'
-                }, {
+                label: '我要連結人工智慧測試網站',
+                text: 'https://aity.waca.ec/'
+                }/*, {
                     type: 'message',
                     label: 'No',
                     text: 'no'
-                }]
+                }*/]
             }//End of template
         });//End of event.reply
     }
