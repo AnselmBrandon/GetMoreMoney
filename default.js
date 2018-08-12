@@ -88,31 +88,26 @@ bot.on('message', function (event) {
                                 "type": "carousel",
                                 "columns": [
                                 {
-                                    "thumbnailImageUrl": "https://i.imgur.com/tNpc6qT.png",
-                                    "imageBackgroundColor": "#FFFFFF",
-                                    "title": "分享卡",
-                                    "text": "抽卡超過10次，送你分享卡",
-                                    "defaultAction": {
-                                        "type": "uri",
-                                        "label": "View detail",
-                                        "uri": "http://example.com/page/123"
-                                    },
+                                "thumbnailImageUrl": "https://example.com/bot/images/item2.jpg",
+                                "imageBackgroundColor": "#000000",
+                                "title": "優惠券",
+                                "text": "有效期限  2018-08-10~2018-08-17",
+                                "defaultAction": {
+                                    "type": "uri",
+                                    "label": "View detail",
+                                    "uri": "http://example.com/page/222"
+                                },
                                     "actions": [
                                     {
                                         "type": "message",
-                                        "label": "Buy",
+                                        "label": "領取",
                                         "text": "領取"
-                                    },
+                                    }*,
                                     {
                                         "type": "postback",
                                         "label": "Add to cart",
                                         "data": "action=add&itemid=111"
-                                    },
-                                    {
-                                        "type": "uri",
-                                        "label": "分享",
-                                        "uri": "https://lihi.cc/iMmHU"
-                                    }
+                                    }*ㄥ
                                 ]
                               }
                           ],
