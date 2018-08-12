@@ -23,53 +23,6 @@ bot.on('message', function (event) {
     console.log('==================');
     if (event.message.text == '0') {
         event.reply({
-                                    "type": "template",
-                            "altText": "this is a carousel template",
-                            "template": {
-                                "type": "carousel",
-                                "columns": [
-                                {
-				"thumbnailImageUrl": "https://example.com/bot/images/item2.jpg",
-                                "imageBackgroundColor": "#000000",	
-                                    "title": "限時優惠",
-                                    "text": "點選獲得網址按鈕後，點選網址到人工智慧網站",
-                                    "defaultAction": {
-				          type: 'message',
-                			  label: '我要連結人工智慧測試網站',
-                			  text: 'https://aity.waca.ec/'
-                                    },
-                                    "actions": [
-                                   /* {
-      				          type: 'message',
-                			  label: '我要連結人工智慧測試網站',
-                			  text: 'https://aity.waca.ec/'
-                                    },
-                                    {
-                                        "type": "uri",
-                                        "label": "分享",
-                                        "uri": "https://aity.waca.ec/"
-                                    }*/
-                                ]
-                              }                  ],
-                          "imageAspectRatio": "rectangle",
-                          "imageSize": "cover"
-			    }
-				    });
-            /*type: 'template',
-        altText: 'this is a confirm template',
-        template: {
-            type: 'confirm',
-            text: '連結人工智慧測試網站?',
-            actions: [{
-                type: 'message',
-                label: '我要連結人工智慧測試網站',
-                text: 'https://aity.waca.ec/'
-                }]
-            }//End of template
-        });//End of event.reply
-        */
-        /*
-        event.reply({
         type: 'template',
         altText: 'this is a confirm template',
         template: {
@@ -86,7 +39,6 @@ bot.on('message', function (event) {
                 }]
             }//End of template
         });//End of event.reply
-        */
     }
 });
 
