@@ -23,7 +23,44 @@ bot.on('message', function (event) {
     console.log('==================');
     if (event.message.text == '0') {
         event.reply({
-        type: 'template',
+                                    "type": "template",
+                            "altText": "this is a carousel template",
+                            "template": {
+                                "type": "carousel",
+                                "columns": [
+                                {
+				"thumbnailImageUrl": "https://example.com/bot/images/item2.jpg",
+                                "imageBackgroundColor": "#000000",	
+                                    "title": "分享卡",
+                                    "text": "抽卡超過10次，送你分享卡",
+                                    "defaultAction": {
+                                        "type": "uri",
+                                        "label": "View detail",
+                                        "uri": "http://example.com/page/123"
+                                    },
+                                    "actions": [
+                                    {
+                                        "type": "postback",
+                                        "label": "Buy",
+                                        "data": "action=buy&itemid=111"
+                                    },
+                                    {
+                                        "type": "postback",
+                                        "label": "Add to cart",
+                                        "data": "action=add&itemid=111"
+                                    },
+                                    {
+                                        "type": "uri",
+                                        "label": "分享",
+                                        //"uri": "http://line.naver.jp/R/msg/text/?test%20message%0D%0Ahttp%3A%2F%2Fline.me/R/ti/p/%40vqt1073d"
+                                        //"uri": "https://bit.ly/2srm8Iz"
+                                        "uri": "https://aity.waca.ec/"
+                                    }
+                                ]
+                              }                  ],
+                          "imageAspectRatio": "rectangle",
+                          "imageSize": "cover"
+            /*type: 'template',
         altText: 'this is a confirm template',
         template: {
             type: 'confirm',
@@ -35,6 +72,7 @@ bot.on('message', function (event) {
                 }]
             }//End of template
         });//End of event.reply
+        */
         /*
         event.reply({
         type: 'template',
