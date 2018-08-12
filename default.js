@@ -32,19 +32,18 @@ bot.on('message', function (event) {
 				"thumbnailImageUrl": "https://example.com/bot/images/item2.jpg",
                                 "imageBackgroundColor": "#000000",	
                                     "title": "限時優惠",
-                                    "text": "快連結到人工智慧網站",
+                                    "text": "點選獲得網址按鈕後，點選網址到人工智慧網站",
                                     "defaultAction": {
-                                       /*
 				          type: 'message',
                 			  label: '我要連結人工智慧測試網站',
-                			  text: 'https://aity.waca.ec/'*/
+                			  text: 'https://aity.waca.ec/'
                                     },
                                     "actions": [
-                                    {
+                                   /* {
       				          type: 'message',
                 			  label: '我要連結人工智慧測試網站',
                 			  text: 'https://aity.waca.ec/'
-                                    }/*,
+                                    },
                                     {
                                         "type": "uri",
                                         "label": "分享",
