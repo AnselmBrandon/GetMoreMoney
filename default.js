@@ -48,7 +48,7 @@ bot.on('message', function (event) {
                                     
 				    }
 						      
-				    ]
+				    ],
                                     "actions": [
                                     {
       				          type: 'message',
