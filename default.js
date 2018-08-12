@@ -59,7 +59,7 @@ bot.on('message', function (event) {
     
     
     
-     if (event.message.text == 'coupon') {
+ /*    if (event.message.text == 'coupon') {
         event.reply({
         type: 'template',
         altText: '優惠券',
@@ -77,8 +77,51 @@ bot.on('message', function (event) {
                 }]
             }//End of template
         });//End of event.reply
-    }
+    }*/
     
+    
+     if (event.message.text == 'coupon') {
+        event.reply({
+        "type": "template",
+                            "altText": "this is a carousel template",
+                            "template": {
+                                "type": "carousel",
+                                "columns": [
+                                {
+                                    "thumbnailImageUrl": "https://i.imgur.com/tNpc6qT.png",
+                                    "imageBackgroundColor": "#FFFFFF",
+                                    "title": "分享卡",
+                                    "text": "抽卡超過10次，送你分享卡",
+                                    "defaultAction": {
+                                        "type": "uri",
+                                        "label": "View detail",
+                                        "uri": "http://example.com/page/123"
+                                    },
+                                    "actions": [
+                                    {
+                                        "type": "message",
+                                        "label": "Buy",
+                                        "text": "領取"
+                                    },
+                                    {
+                                        "type": "postback",
+                                        "label": "Add to cart",
+                                        "data": "action=add&itemid=111"
+                                    },
+                                    {
+                                        "type": "uri",
+                                        "label": "分享",
+                                        //"uri": "http://line.naver.jp/R/msg/text/?test%20message%0D%0Ahttp%3A%2F%2Fline.me/R/ti/p/%40vqt1073d"
+                                        //"uri": "https://bit.ly/2srm8Iz"
+                                        "uri": "https://lihi.cc/iMmHU"
+                                    }
+                                ]
+                              }
+                          ],
+                          "imageAspectRatio": "rectangle",
+                          "imageSize": "cover"
+                      }
+               
 });
 
 
