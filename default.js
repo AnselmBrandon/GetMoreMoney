@@ -56,7 +56,33 @@ bot.on('message', function (event) {
         });//End of event.reply
     }
     
+    
+    
+    
+     if (event.message.text == 'coupon') {
+        event.reply({
+        type: 'template',
+        altText: '優惠券',
+        template: {
+            type: 'confirm',
+            text: '有效期限',
+            actions: [{
+                type: 'message',
+                label: '領取優惠券',
+                text: '領取優惠券'
+                }, {
+                    type: 'message',
+                    label: '我不要優惠券',
+                    text: '我不要優惠券'
+                }]
+            }//End of template
+        });//End of event.reply
+    }
+    
 });
+
+
+
 
 
 const app = express();
