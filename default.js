@@ -42,9 +42,9 @@ bot.on('message', function (event) {
                 			  text: 'https://aity.waca.ec/'
                                     },{
 				     
-      				          type: 'message',
-                			  label: '我要連結人工智慧測試網站',
-                			  text: 'https://aity.waca.ec/'
+                                        "type": "uri",
+                                        "label": "分享",
+                                        "uri": "https://aity.waca.ec/"
                                     
 				    }
 						      
