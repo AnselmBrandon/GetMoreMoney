@@ -30,12 +30,12 @@ bot.on('message', function (event) {
             text: '連結人工智慧測試網站?',
             actions: [{
                 type: 'message',
-                label: '我要連結人工智慧測試網站',
+                label: '我要連結',
                 text: 'https://aity.waca.ec/'
                 }, {
                     type: 'message',
-                    label: 'No',
-                    text: 'no'
+                    label: '我不要連結',
+                    text: '我不要連結'
                 }]
             }//End of template
         });//End of event.reply
