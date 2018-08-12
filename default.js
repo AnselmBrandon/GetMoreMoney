@@ -31,7 +31,7 @@ bot.on('message', function (event) {
             actions: [{
                 type: 'message',
                 label: '我要連結',
-                text: 'https://aity.waca.ec/'
+                text: '我要連結'
                 }, {
                     type: 'message',
                     label: '我不要連結',
@@ -40,6 +40,13 @@ bot.on('message', function (event) {
             }//End of template
         });//End of event.reply
     }
+     if (event.message.text == '我要連結') {
+        event.reply({
+        type: 'text',
+        text: 'https://aity.waca.ec/'
+        });//End of event.reply
+    }
+    
 });
 
 
