@@ -32,6 +32,20 @@ bot.on('message', function (event) {
                 type: 'message',
                 label: '我要連結人工智慧測試網站',
                 text: 'https://aity.waca.ec/'
+                }]
+            }//End of template
+        });//End of event.reply
+        /*
+        event.reply({
+        type: 'template',
+        altText: 'this is a confirm template',
+        template: {
+            type: 'confirm',
+            text: '連結人工智慧測試網站?',
+            actions: [{
+                type: 'message',
+                label: '我要連結人工智慧測試網站',
+                text: 'https://aity.waca.ec/'
                 }, {
                     type: 'message',
                     label: 'No',
@@ -39,6 +53,7 @@ bot.on('message', function (event) {
                 }]
             }//End of template
         });//End of event.reply
+        */
     }
 });
 
