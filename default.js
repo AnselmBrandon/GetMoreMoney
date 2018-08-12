@@ -116,6 +116,43 @@ bot.on('message', function (event) {
                       }
          });
          }
+    
+    if (event.message.text == '領取') {
+        event.reply({
+                            "type": "template",
+                            "altText": "this is a carousel template",
+                            "template": {
+                                "type": "carousel",
+                                "columns": [
+                                {
+                                "thumbnailImageUrl": "https://example.com/bot/images/item2.jpg",
+                                "imageBackgroundColor": "#000000",
+                                "title": "優惠券",
+                                "text": "有效期限  2018-08-10~2018-08-17",
+                                "defaultAction": {
+                                    "type": "uri",
+                                    "label": "View detail",
+                                    "uri": "http://example.com/page/222"
+                                },
+                                    "actions": [
+                                    {
+                                        "type": "message",
+                                        "label": "使用",
+                                        "text": "使用"
+                                    }/*,
+                                    {
+                                        "type": "postback",
+                                        "label": "Add to cart",
+                                        "data": "action=add&itemid=111"
+                                    }*/
+                                ]
+                              }
+                          ],
+                          "imageAspectRatio": "rectangle",
+                          "imageSize": "cover"
+                      }
+         });
+         }
 });
 
 
