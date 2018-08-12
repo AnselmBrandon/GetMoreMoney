@@ -58,6 +58,7 @@ bot.on('message', function (event) {
                               }                  ],
                           "imageAspectRatio": "rectangle",
                           "imageSize": "cover"
+			    }
 				    });
             /*type: 'template',
         altText: 'this is a confirm template',
