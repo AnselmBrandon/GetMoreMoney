@@ -102,12 +102,12 @@ bot.on('message', function (event) {
                                         "type": "message",
                                         "label": "領取",
                                         "text": "領取"
-                                    }*,
+                                    }/*,
                                     {
                                         "type": "postback",
                                         "label": "Add to cart",
                                         "data": "action=add&itemid=111"
-                                    }*ㄥ
+                                    }*/
                                 ]
                               }
                           ],
