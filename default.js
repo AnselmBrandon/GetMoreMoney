@@ -31,29 +31,27 @@ bot.on('message', function (event) {
                                 {
 				"thumbnailImageUrl": "https://example.com/bot/images/item2.jpg",
                                 "imageBackgroundColor": "#000000",	
-                                    "title": "分享卡",
-                                    "text": "抽卡超過10次，送你分享卡",
+                                    "title": "限時優惠",
+                                    "text": "快連結到人工智慧網站",
                                     "defaultAction": {
-                                        "type": "uri",
+                                       /* "type": "uri",
                                         "label": "View detail",
-                                        "uri": "http://example.com/page/123"
+                                        "uri": "http://example.com/page/123"*/
+				          type: 'message',
+                			  label: '我要連結人工智慧測試網站',
+                			  text: 'https://aity.waca.ec/'
                                     },
                                     "actions": [
                                     {
-                                        "type": "postback",
-                                        "label": "Buy",
-                                        "data": "action=buy&itemid=111"
-                                    },
-                                    {
-                                        "type": "postback",
-                                        "label": "Add to cart",
-                                        "data": "action=add&itemid=111"
-                                    },
+      				          type: 'message',
+                			  label: '我要連結人工智慧測試網站',
+                			  text: 'https://aity.waca.ec/'
+                                    }/*,
                                     {
                                         "type": "uri",
                                         "label": "分享",
                                         "uri": "https://aity.waca.ec/"
-                                    }
+                                    }*/
                                 ]
                               }                  ],
                           "imageAspectRatio": "rectangle",
