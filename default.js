@@ -21,7 +21,7 @@ bot.on('message', function (event) {
     console.log('replyToken==>', event.replyToken);
     console.log('userId==>', event.source.userId);
     console.log('==================');
-    if (event.message.text == '0') {
+    if (event.message.text == 'url') {
         event.reply({
         type: 'template',
         altText: 'this is a confirm template',
