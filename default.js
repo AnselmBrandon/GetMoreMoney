@@ -228,7 +228,7 @@ bot.on('message', function (event) {
         var cpid1 = event.message.text.replace('BOT Setup X=', '');
         const client = new Client({ connectionString: process.env.DATABASE_URL, ssl: true, });
         client.connect();
-        client.query("UPDATE public.configure SET friend= '" + cpid1 + "' WHERE id='1'", (err1, res) => {
+        client.query("UPDATE public.configure SET value= '" + cpid1 + "' WHERE id='1'", (err1, res) => {
             if (err1) throw err1;
                     client.end();
                 });
