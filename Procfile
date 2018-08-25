@@ -1,1 +1,1 @@
-web: node schedule_task.js
+web: node default.js
