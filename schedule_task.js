@@ -37,7 +37,7 @@ client.query(sql1, (err, res) => {
         
         bot.push(row.lineid, {
             type: 'text',
-            text: row.msg
+            text: row.msg + row.couponid
         });
         console.log('ok');
     }
