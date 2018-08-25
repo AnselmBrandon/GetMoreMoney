@@ -146,7 +146,6 @@ bot.on('message', function (event) {
     }
     
     if (event.message.text.startsWith('領取')) {
-
         console.log('==================事件:領取優惠卷==' + event.message.text);
         var cpid = event.message.text.replace('領取', '');
         const client = new Client({ connectionString: process.env.DATABASE_URL, ssl: true, });
@@ -158,7 +157,7 @@ bot.on('message', function (event) {
                 if (err1) throw err1;
                 client.end();
             });
-        console.log("新增一筆【領取優惠卷】" + cpid +"資料OK");
+        console.log("新增一筆【領取優惠卷】" + cpid + " ==>OK");
 
         event.reply({
             "type": "template",
@@ -194,6 +193,34 @@ bot.on('message', function (event) {
                 "imageSize": "cover"
             }
         });
+    }
+    else if (event.message.text.startsWith('使用')) {
+        console.log('==================事件:使用優惠卷==' + event.message.text);
+        var cpid1 = event.message.text.replace('使用', '');
+        const client = new Client({ connectionString: process.env.DATABASE_URL, ssl: true, });
+        client.connect();
+        client.query(
+            'INSERT into public.usecoupon (lineid, usetime, couponid) VALUES($1, $2, $3) ',
+            [event.source.userId, new Date(), cpid1],
+            function (err1, result) {
+                if (err1) throw err1;
+                client.end();
+            });
+        console.log("新增一筆【使用優惠卷】" + cpid1 + " ==>OK");
+    }
+    else if (event.message.text.startsWith('連結')) {
+        console.log('==================事件:連結==' + event.message.text);
+        var clkurl = event.message.text.replace('連結', '');
+        const client = new Client({ connectionString: process.env.DATABASE_URL, ssl: true, });
+        client.connect();
+        client.query(
+            'INSERT into public.clickurl (lineid, clicktime, url) VALUES($1, $2, $3) ',
+            [event.source.userId, new Date(), clkurl],
+            function (err1, result) {
+                if (err1) throw err1;
+                client.end();
+            });
+        console.log("新增一筆【連結】" + clkurl + " ==>OK");
     }
 });
 
