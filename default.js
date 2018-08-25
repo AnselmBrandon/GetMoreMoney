@@ -245,7 +245,39 @@ bot.on('message', function (event) {
                 });
         console.log("變更AddLine Message" + cpid1 + " ==>OK");
     }
-   
+        else if (event.message.text.startsWith('BOT Setup GetCoupon Message=')) {
+        console.log('==================事件:設定GetCoupon Message==' + event.message.text);
+        var cpid1 = event.message.text.replace('BOT Setup GetCoupon Message=', '');
+        const client = new Client({ connectionString: process.env.DATABASE_URL, ssl: true, });
+        client.connect();
+        client.query("UPDATE public.configure SET value= '" + cpid1 + "' WHERE id='3'", (err1, res) => {
+            if (err1) throw err1;
+                    client.end();
+                });
+        console.log("變更GetCoupon Message" + cpid1 + " ==>OK");
+    }
+        else if (event.message.text.startsWith('BOT Setup UseCoupon Message=')) {
+        console.log('==================事件:設定UseCoupon Message==' + event.message.text);
+        var cpid1 = event.message.text.replace('BOT Setup UseCoupon Message=', '');
+        const client = new Client({ connectionString: process.env.DATABASE_URL, ssl: true, });
+        client.connect();
+        client.query("UPDATE public.configure SET value= '" + cpid1 + "' WHERE id='4'", (err1, res) => {
+            if (err1) throw err1;
+                    client.end();
+                });
+        console.log("變更UseCoupon Message" + cpid1 + " ==>OK");
+    }
+        else if (event.message.text.startsWith('BOT Setup ClickURL Message=')) {
+        console.log('==================事件:設定ClickURL Message==' + event.message.text);
+        var cpid1 = event.message.text.replace('BOT Setup ClickURL Message=', '');
+        const client = new Client({ connectionString: process.env.DATABASE_URL, ssl: true, });
+        client.connect();
+        client.query("UPDATE public.configure SET value= '" + cpid1 + "' WHERE id='5'", (err1, res) => {
+            if (err1) throw err1;
+                    client.end();
+                });
+        console.log("變更ClickURL Message" + cpid1 + " ==>OK");
+    }
     if (event.message.text.length>0) {
         //console.log('==================事件:記錄訊息==' + event.message.text);
         const client = new Client({ connectionString: process.env.DATABASE_URL, ssl: true, });
