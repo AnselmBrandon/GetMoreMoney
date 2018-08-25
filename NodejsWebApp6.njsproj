@@ -32,6 +32,9 @@
     <Compile Include="default.js">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="schedule_task.js">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="server.js" />
     <Content Include="package.json" />
     <Content Include="Procfile" />
