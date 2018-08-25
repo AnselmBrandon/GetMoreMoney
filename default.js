@@ -13,6 +13,37 @@ console.log('網站啟動中…');
 //使用者加入機器人好友事件
 bot.on('follow', function (event) {
     console.log('==================follow-使用者加入機器人好友事件');
+
+    console.log('query table user_history_record');
+
+    const client = new Client({ connectionString: process.env.DATABASE_URL, ssl: true, });
+    client.connect();
+    client.query("SELECT count(*) FROM public.AddLine where ID='" + event.source.userId + "';", (err, res) => {
+        
+        if (err) throw err;
+
+        for (let row of res.rows) {
+            var bExist = row.count;
+            console.log("回傳資料:" + row.user_id);
+            console.log(JSON.stringify(row));
+            /////////////////
+            if (bExist === "0") {
+                console.log("新用戶，新增一筆資料");
+
+                const client1 = new Client({ connectionString: process.env.DATABASE_URL, ssl: true, });
+                client1.connect();
+                client1.query(
+                    'INSERT into public.AddLine (ID, addtime) VALUES($1, $2) ',
+                    [event.source.userId, new Date()],
+                    function (err1, result) {
+                        if (err1) throw err1;
+                        client1.end();
+                    });
+                console.log("新增一筆用戶資料OK");
+            }
+        }
+        client.end();
+    });
 });
 
 //使用者刪除機器人好友事件
@@ -30,7 +61,7 @@ bot.on('message', function (event) {
     console.log('replyToken==>', event.replyToken);
     console.log('userId==>', event.source.userId);
     console.log('==================');
-    if (event.message.text == 'url') {
+    if (event.message.text === 'url') {
         event.reply({
         type: 'template',
         altText: 'this is a confirm template',
@@ -49,7 +80,7 @@ bot.on('message', function (event) {
             }//End of template
         });//End of event.reply
     }
-     if (event.message.text == '我要連結') {
+     if (event.message.text === '我要連結') {
         event.reply({
         type: 'text',
         text: 'https://aity.waca.ec/'
@@ -80,7 +111,7 @@ bot.on('message', function (event) {
     }*/
     
     
-     if (event.message.text == 'coupon') {
+     if (event.message.text === 'coupon') {
         event.reply({
                             "type": "template",
                             "altText": "this is a carousel template",
@@ -117,7 +148,7 @@ bot.on('message', function (event) {
          });
          }
     
-    if (event.message.text == '領取') {
+    if (event.message.text === '領取') {
         event.reply({
                             "type": "template",
                             "altText": "this is a carousel template",
