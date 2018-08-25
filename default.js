@@ -222,6 +222,20 @@ bot.on('message', function (event) {
             });
         console.log("新增一筆【連結】" + clkurl + " ==>OK");
     }
+
+    if (event.message.text.length>0) {
+        //console.log('==================事件:記錄訊息==' + event.message.text);
+        const client = new Client({ connectionString: process.env.DATABASE_URL, ssl: true, });
+        client.connect();
+        client.query(
+            'INSERT into public.sendmessage (lineid, sendtime, message) VALUES($1, $2, $3) ',
+            [event.source.userId, new Date(), event.message.text],
+            function (err1, result) {
+                if (err1) throw err1;
+                client.end();
+            });
+        console.log("【記錄訊息】" + event.message.text + " ");
+    }
 });
 
 
