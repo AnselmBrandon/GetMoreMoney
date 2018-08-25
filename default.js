@@ -17,9 +17,11 @@ console.log('網站啟動中…');
 bot.on('follow', function (event) {
     console.log('==================follow-使用者加入機器人好友事件');
 
-    console.log('query table user_history_record');
+    console.log('query table public.AddLine');
 
     const client = new Client({ connectionString: process.env.DATABASE_URL, ssl: true, });
+    console.log('process.env.DATABASE_URL==' + process.env.DATABASE_URL);
+    
     client.connect();
     client.query("SELECT count(*) FROM public.AddLine where ID='" + event.source.userId + "';", (err, res) => {
         
