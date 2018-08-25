@@ -234,6 +234,17 @@ bot.on('message', function (event) {
                 });
         console.log("變更X值為" + cpid1 + " ==>OK");
     }
+    else if (event.message.text.startsWith('BOT Setup AddLine Message=')) {
+        console.log('==================事件:設定AddLine Message==' + event.message.text);
+        var cpid1 = event.message.text.replace('BOT Setup AddLine Message=', '');
+        const client = new Client({ connectionString: process.env.DATABASE_URL, ssl: true, });
+        client.connect();
+        client.query("UPDATE public.configure SET value= '" + cpid1 + "' WHERE id='2'", (err1, res) => {
+            if (err1) throw err1;
+                    client.end();
+                });
+        console.log("變更AddLine Message" + cpid1 + " ==>OK");
+    }
    
     if (event.message.text.length>0) {
         //console.log('==================事件:記錄訊息==' + event.message.text);
