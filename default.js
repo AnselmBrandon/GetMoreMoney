@@ -16,22 +16,14 @@ console.log('網站啟動中…');
 //使用者加入機器人好友事件
 bot.on('follow', function (event) {
     console.log('==================follow-使用者加入機器人好友事件');
-
-    console.log('query table public.AddLine');
-
     const client = new Client({ connectionString: process.env.DATABASE_URL, ssl: true, });
-    console.log('process.env.DATABASE_URL==' + process.env.DATABASE_URL);
-    
     client.connect();
-    client.query("SELECT count(*) FROM public.addline where ID='" + event.source.userId + "';", (err, res) => {
-        
+    client.query("SELECT count(*) FROM public.addline where ID='" + event.source.userId + "';", (err, res) => {        
         if (err) throw err;
-
         for (let row of res.rows) {
             var bExist = row.count;
             console.log("回傳資料:" + row.user_id);
             console.log(JSON.stringify(row));
-            /////////////////
             if (bExist === "0") {
                 console.log("新用戶，新增一筆資料");
 
@@ -116,79 +108,83 @@ bot.on('message', function (event) {
     }*/
     
     
-     if (event.message.text === 'coupon') {
+    if (event.message.text === 'coupon') {
         event.reply({
-                            "type": "template",
-                            "altText": "this is a carousel template",
-                            "template": {
-                                "type": "carousel",
-                                "columns": [
-                                {
-                                "thumbnailImageUrl": "https://example.com/bot/images/item2.jpg",
-                                "imageBackgroundColor": "#000000",
-                                "title": "優惠券",
-                                "text": "有效期限  2018-08-10~2018-08-17",
-                                "defaultAction": {
-                                    "type": "uri",
-                                    "label": "View detail",
-                                    "uri": "http://example.com/page/222"
-                                },
-                                    "actions": [
-                                    {
-                                        "type": "message",
-                                        "label": "領取",
-                                        "text": "領取"
-                                    }/*,
+            "type": "template",
+            "altText": "this is a carousel template",
+            "template": {
+                "type": "carousel",
+                "columns": [
+                    {
+                        "thumbnailImageUrl": "https://example.com/bot/images/item2.jpg",
+                        "imageBackgroundColor": "#000000",
+                        "title": "優惠券",
+                        "text": "有效期限  2018-08-10~2018-08-17",
+                        "defaultAction": {
+                            "type": "uri",
+                            "label": "View detail",
+                            "uri": "http://example.com/page/222"
+                        },
+                        "actions": [
+                            {
+                                "type": "message",
+                                "label": "領取",
+                                "text": "領取"
+                            }/*,
                                     {
                                         "type": "postback",
                                         "label": "Add to cart",
                                         "data": "action=add&itemid=111"
                                     }*/
-                                ]
-                              }
-                          ],
-                          "imageAspectRatio": "rectangle",
-                          "imageSize": "cover"
-                      }
-         });
-         }
+                        ]
+                    }
+                ],
+                "imageAspectRatio": "rectangle",
+                "imageSize": "cover"
+            }
+        });
+    }
     
-    if (event.message.text === '領取') {
+    if (event.message.text.startsWith('領取')) {
+
+        console.log('==================事件:領取優惠卷==' + event.message.text);
+
+
         event.reply({
-                            "type": "template",
-                            "altText": "this is a carousel template",
-                            "template": {
-                                "type": "carousel",
-                                "columns": [
-                                {
-                                "thumbnailImageUrl": "https://example.com/bot/images/item2.jpg",
-                                "imageBackgroundColor": "#000000",
-                                "title": "優惠券",
-                                "text": "有效期限  2018-08-10~2018-08-17",
-                                "defaultAction": {
-                                    "type": "uri",
-                                    "label": "View detail",
-                                    "uri": "http://example.com/page/222"
-                                },
-                                    "actions": [
-                                    {
-                                        "type": "message",
-                                        "label": "使用",
-                                        "text": "使用"
-                                    }/*,
+            "type": "template",
+            "altText": "this is a carousel template",
+            "template": {
+                "type": "carousel",
+                "columns": [
+                    {
+                        "thumbnailImageUrl": "https://example.com/bot/images/item2.jpg",
+                        "imageBackgroundColor": "#000000",
+                        "title": "優惠券",
+                        "text": "有效期限  2018-08-10~2018-08-17",
+                        "defaultAction": {
+                            "type": "uri",
+                            "label": "View detail",
+                            "uri": "http://example.com/page/222"
+                        },
+                        "actions": [
+                            {
+                                "type": "message",
+                                "label": "使用",
+                                "text": "使用"
+                            }/*,
                                     {
                                         "type": "postback",
                                         "label": "Add to cart",
                                         "data": "action=add&itemid=111"
                                     }*/
-                                ]
-                              }
-                          ],
-                          "imageAspectRatio": "rectangle",
-                          "imageSize": "cover"
-                      }
-         });
-         }
+                        ]
+                    }
+                ],
+                "imageAspectRatio": "rectangle",
+                "imageSize": "cover"
+            }
+        });
+    }
 });
 
 
