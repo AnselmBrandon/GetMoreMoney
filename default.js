@@ -148,7 +148,17 @@ bot.on('message', function (event) {
     if (event.message.text.startsWith('領取')) {
 
         console.log('==================事件:領取優惠卷==' + event.message.text);
-
+        var cpid = event.message.text.replace('領取', '');
+        const client = new Client({ connectionString: process.env.DATABASE_URL, ssl: true, });
+        client.connect();
+        client.query(
+            'INSERT into public.getcoupon (lineid, gettime, couponid) VALUES($1, $2, $3) ',
+            [event.source.userId, new Date(), cpid],
+            function (err1, result) {
+                if (err1) throw err1;
+                client.end();
+            });
+        console.log("新增一筆【領取優惠卷】" + cpid +"資料OK");
 
         event.reply({
             "type": "template",
