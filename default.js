@@ -8,6 +8,9 @@ var bot = linebot({
     channelAccessToken: 'llr0iuNKZNnNvDXKQ5SpBGUVSCGM1FxOwEWKFAbiX45ZbKYZVzbLt67TcDwhgjISuTvIdMstBWVpfADfORx7cT0/97Tkx5lmHY2z+77az/3lc371kL27XpD5T9f8Vr+PyLBY4fHmuHrpx8lRyl/HOgdB04t89/1O/w1cDnyilFU='
 });
 
+//heroku-postgresql
+const { Client } = require('pg');
+
 console.log('網站啟動中…');
 
 //使用者加入機器人好友事件
