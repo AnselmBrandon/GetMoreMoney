@@ -222,22 +222,19 @@ bot.on('message', function (event) {
             });
         console.log("新增一筆【連結】" + clkurl + " ==>OK");
     }
-    /*
+    
     else if (event.message.text.startsWith('BOT Setup X=')) {
         console.log('==================事件:設定x值==' + event.message.text);
         var cpid1 = event.message.text.replace('BOT Setup X=', '');
         const client = new Client({ connectionString: process.env.DATABASE_URL, ssl: true, });
         client.connect();
-        client.query(
-            'UPDATE public.configure SET value=cpid1	WHERE id=1 ',
-            [1, 'x', cpid1],
-            function (err1, result) {
-                if (err1) throw err1;
-                client.end();
-            });
+        client.query("UPDATE public.configure SET friend= '" + cpid1 + "' WHERE id='1'", (err1, res) => {
+            if (err1) throw err1;
+                    client.end();
+                });
         console.log("變更X值為" + cpid1 + " ==>OK");
     }
-   */
+   
     if (event.message.text.length>0) {
         //console.log('==================事件:記錄訊息==' + event.message.text);
         const client = new Client({ connectionString: process.env.DATABASE_URL, ssl: true, });
