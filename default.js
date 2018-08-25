@@ -23,7 +23,7 @@ bot.on('follow', function (event) {
     console.log('process.env.DATABASE_URL==' + process.env.DATABASE_URL);
     
     client.connect();
-    client.query("SELECT count(*) FROM public.AddLine where ID='" + event.source.userId + "';", (err, res) => {
+    client.query("SELECT count(*) FROM public.addline where ID='" + event.source.userId + "';", (err, res) => {
         
         if (err) throw err;
 
@@ -38,7 +38,7 @@ bot.on('follow', function (event) {
                 const client1 = new Client({ connectionString: process.env.DATABASE_URL, ssl: true, });
                 client1.connect();
                 client1.query(
-                    'INSERT into public.AddLine (ID, addtime) VALUES($1, $2) ',
+                    'INSERT into public.addline (id, addtime) VALUES($1, $2) ',
                     [event.source.userId, new Date()],
                     function (err1, result) {
                         if (err1) throw err1;
