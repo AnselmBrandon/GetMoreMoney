@@ -137,7 +137,8 @@ bot.on('message', function (event) {
     ssl: true,
 });
 client.connect();
-var sql1 ="SELECT * FROM public.configure WHERE id = '6';";
+var sql1 ="SELECT * FROM public.configure WHERE id ='"+"6"+"'";
+
 console.log(sql1);
 
 client.query(sql1, (err, res) => {
