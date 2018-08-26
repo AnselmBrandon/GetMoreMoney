@@ -142,7 +142,8 @@ bot.on('message', function (event) {
                         "thumbnailImageUrl": "https://example.com/bot/images/item2.jpg",
                         "imageBackgroundColor": "#000000",
                         "title": "優惠券",
-                        "text": "有效期限  "+test,//2018-08-10~2018-08-17",
+                        //"text": "有效期限  "+test,//2018-08-10~2018-08-17",
+                        "text": "有效期限  2018-08-10~2018-08-17",
                         "defaultAction": {
                             "type": "uri",
                             "label": "View detail",
@@ -152,7 +153,8 @@ bot.on('message', function (event) {
                             {
                                 "type": "message",
                                 "label": "領取",
-                                "text": "領取"+test
+                                //"text": "領取"+test
+                                "text": "領取"
                             }/*,
                                     {
                                         "type": "postback",
