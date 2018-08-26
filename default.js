@@ -130,8 +130,8 @@ bot.on('message', function (event) {
     }*/
     
     
-    if (event.message.text == 'coupon') {
-        var test=new Date();
+    if (event.message.text.startsWith('coupon')) {
+        var couponid= event.message.text.replace('coupon', '');
         event.reply({
             "type": "template",
             "altText": "this is a carousel template",
@@ -142,7 +142,6 @@ bot.on('message', function (event) {
                         "thumbnailImageUrl": "https://example.com/bot/images/item2.jpg",
                         "imageBackgroundColor": "#000000",
                         "title": "優惠券",
-                        //"text": "有效期限  "+test,//2018-08-10~2018-08-17",
                         "text": "有效期限  2018-08-10~2018-08-17",
                         "defaultAction": {
                             "type": "uri",
@@ -153,7 +152,7 @@ bot.on('message', function (event) {
                             {
                                 "type": "message",
                                 "label": "領取",
-                                "text": "領取"+test
+                                "text": "領取"+couponid
                                 //"text": "領取"
                             }/*,
                                     {
@@ -204,7 +203,7 @@ bot.on('message', function (event) {
                             {
                                 "type": "message",
                                 "label": "使用",
-                                "text": "使用"
+                                "text": "使用"+cpid
                             }/*,
                                     {
                                         "type": "postback",
