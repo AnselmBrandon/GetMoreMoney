@@ -131,7 +131,7 @@ bot.on('message', function (event) {
     
     
     if (event.message.text.startsWith('coupon')) {
-        
+        /*
         var sql1 ="SELECT * FROM public.configure WHERE id = '6';";
         console.log(sql1);
         var duration="1";
@@ -144,7 +144,7 @@ bot.on('message', function (event) {
         }
          client.end();
         );
-      
+        */
         
         var couponid= event.message.text.replace('coupon', '');
         event.reply({
