@@ -151,8 +151,8 @@ client.query(sql1, (err, res) => {
 
     }
     console.log(duration);
-    client.end();
-});
+   // client.end();
+//});
         /*
         var sql1 ="SELECT * FROM public.configure WHERE id = '6';";
         console.log(sql1);
@@ -207,6 +207,10 @@ client.query(sql1, (err, res) => {
                 "imageSize": "cover"
             }
         });
+   ////////
+        client.end();
+});
+    /////////
     }
     
     else if (event.message.text.startsWith('領取')) {
