@@ -131,6 +131,7 @@ bot.on('message', function (event) {
     
     
     if (event.message.text == 'coupon') {
+        var test='2018-08-10~2018-08-17';
         event.reply({
             "type": "template",
             "altText": "this is a carousel template",
@@ -141,7 +142,7 @@ bot.on('message', function (event) {
                         "thumbnailImageUrl": "https://example.com/bot/images/item2.jpg",
                         "imageBackgroundColor": "#000000",
                         "title": "優惠券",
-                        "text": "有效期限  2018-08-10~2018-08-17",
+                        "text": "有效期限  "+test,//2018-08-10~2018-08-17",
                         "defaultAction": {
                             "type": "uri",
                             "label": "View detail",
