@@ -131,25 +131,19 @@ bot.on('message', function (event) {
     
     
     if (event.message.text.startsWith('coupon')) {
-        /*
-        
         var sql1 ="SELECT * FROM public.configure WHERE id = '6';";
         console.log(sql1);
-
+        var duration="";
         client.query(sql1, (err, res) => {
         if (err) throw err;
         for (let row of res.rows) {
-        
-        bot.push(row.lineid, {
-            type: 'text',
-            text: row.msg + row.couponid
+            duration=row.value;
         });
         console.log('ok');
          }
          client.end();
         });
         
-        */
         var couponid= event.message.text.replace('coupon', '');
         event.reply({
             "type": "template",
@@ -162,7 +156,9 @@ bot.on('message', function (event) {
                         "thumbnailImageUrl": "https://i.imgur.com/OFGFoA6.jpg",
                         "imageBackgroundColor": "#000000",
                         "title": "優惠券",
-                        "text": "有效期限  2018-08-10~2018-08-17",
+                        //"text": "有效期限  2018-08-10~2018-08-17",
+                        "text": "有效期限  "+duration,
+                        
                         "defaultAction": {
                             "type": "uri",
                             "label": "View detail",
