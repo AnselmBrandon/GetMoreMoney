@@ -131,7 +131,7 @@ bot.on('message', function (event) {
     
     
     if (event.message.text == 'coupon') {
-        var test='2018-08-10~2018-08-17';
+        var test=new Date();
         event.reply({
             "type": "template",
             "altText": "this is a carousel template",
@@ -153,8 +153,8 @@ bot.on('message', function (event) {
                             {
                                 "type": "message",
                                 "label": "領取",
-                                //"text": "領取"+test
-                                "text": "領取"
+                                "text": "領取"+test
+                                //"text": "領取"
                             }/*,
                                     {
                                         "type": "postback",
