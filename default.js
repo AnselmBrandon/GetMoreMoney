@@ -167,7 +167,7 @@ client.query(sql1, (err, res) => {
          client.end();
         );
         */
-        
+        console.log(duration);
         var couponid= event.message.text.replace('coupon', '');
         event.reply({
             "type": "template",
