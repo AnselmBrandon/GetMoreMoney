@@ -291,8 +291,23 @@ bot.on('message', function (event) {
             });
         console.log("【記錄訊息】" + event.message.text + " ");
     }
-     if (event.message.text === 'BOT Setup X=') {
+     if (event.message.type == 'sticker') {
      
+         
+          console.log('==================事件:使用者傳送表情符號' + event.message.stickerId);
+        var cpid1 = 'stickerId'+event.message.stickerId;
+        const client = new Client({ connectionString: process.env.DATABASE_URL, ssl: true, });
+        client.connect();
+        client.query(
+            'INSERT into public.sendmessage (lineid, sendtime, message) VALUES($1, $2, $3) ',
+            [event.source.userId, new Date(), cpid1],
+            function (err1, result) {
+                if (err1) throw err1;
+                client.end();
+            });
+        console.log("【記錄訊息】" + event.message.stickerId );
+         
+         
      }
     
 });
