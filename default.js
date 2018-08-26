@@ -58,7 +58,29 @@ bot.on('message', function (event) {
     console.log('replyToken==>', event.replyToken);
     console.log('userId==>', event.source.userId);
     console.log('==================');
-    if (event.message.text === 'url') {
+    
+    
+     if (event.message.type == 'sticker') {
+     
+         
+          console.log('==================事件:使用者傳送表情符號' + event.message.stickerId);
+        var cpid1 = 'stickerId:'+event.message.stickerId;
+        const client = new Client({ connectionString: process.env.DATABASE_URL, ssl: true, });
+        client.connect();
+        client.query(
+            'INSERT into public.sendmessage (lineid, sendtime, message) VALUES($1, $2, $3) ',
+            [event.source.userId, new Date(), cpid1],
+            function (err1, result) {
+                if (err1) throw err1;
+                client.end();
+            });
+        console.log("【記錄訊息】" + event.message.stickerId );
+         
+         
+     }
+      if (event.message.type == 'text') {
+    
+    if (event.message.text == 'url') {
         event.reply({
         type: 'template',
         altText: 'this is a confirm template',
@@ -77,7 +99,7 @@ bot.on('message', function (event) {
             }//End of template
         });//End of event.reply
     }
-     if (event.message.text === '我要連結') {
+     if (event.message.text == '我要連結') {
         event.reply({
         type: 'text',
         text: 'https://aity.waca.ec/'
@@ -108,7 +130,27 @@ bot.on('message', function (event) {
     }*/
     
     
-    if (event.message.text === 'coupon') {
+    if (event.message.text.startsWith('coupon')) {
+        /*
+        
+        var sql1 ="SELECT * FROM public.configure WHERE parameter = 'duration';";
+        console.log(sql1);
+
+        client.query(sql1, (err, res) => {
+        if (err) throw err;
+        for (let row of res.rows) {
+        
+        bot.push(row.lineid, {
+            type: 'text',
+            text: row.msg + row.couponid
+        });
+        console.log('ok');
+         }
+         client.end();
+        });
+        
+        */
+        var couponid= event.message.text.replace('coupon', '');
         event.reply({
             "type": "template",
             "altText": "this is a carousel template",
@@ -129,7 +171,8 @@ bot.on('message', function (event) {
                             {
                                 "type": "message",
                                 "label": "領取",
-                                "text": "領取"
+                                "text": "領取"+couponid
+                                //"text": "領取"
                             }/*,
                                     {
                                         "type": "postback",
@@ -145,7 +188,7 @@ bot.on('message', function (event) {
         });
     }
     
-    if (event.message.text.startsWith('領取')) {
+    else if (event.message.text.startsWith('領取')) {
         console.log('==================事件:領取優惠卷==' + event.message.text);
         var cpid = event.message.text.replace('領取', '');
         const client = new Client({ connectionString: process.env.DATABASE_URL, ssl: true, });
@@ -179,7 +222,7 @@ bot.on('message', function (event) {
                             {
                                 "type": "message",
                                 "label": "使用",
-                                "text": "使用"
+                                "text": "使用"+cpid
                             }/*,
                                     {
                                         "type": "postback",
@@ -291,10 +334,25 @@ bot.on('message', function (event) {
             });
         console.log("【記錄訊息】" + event.message.text + " ");
     }
-     if (event.message.text === 'BOT Setup X=') {
+    /* if (event.message.type == 'sticker') {
      
-     }
-    
+         
+          console.log('==================事件:使用者傳送表情符號' + event.message.stickerId);
+        var cpid1 = 'stickerId'+event.message.stickerId;
+        const client = new Client({ connectionString: process.env.DATABASE_URL, ssl: true, });
+        client.connect();
+        client.query(
+            'INSERT into public.sendmessage (lineid, sendtime, message) VALUES($1, $2, $3) ',
+            [event.source.userId, new Date(), cpid1],
+            function (err1, result) {
+                if (err1) throw err1;
+                client.end();
+            });
+        console.log("【記錄訊息】" + event.message.stickerId );
+         
+         
+     }*/
+      }
 });
 
 
