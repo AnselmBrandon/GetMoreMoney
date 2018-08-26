@@ -322,6 +322,18 @@ bot.on('message', function (event) {
                 });
         console.log("變更ClickURL Message" + cpid1 + " ==>OK");
     }
+         else if (event.message.text.startsWith('BOT Setup Coupon Duration=')) {
+        console.log('==================事件:設定優惠券有效期間==' + event.message.text);
+        var cpid1 = event.message.text.replace('BOT Setup Coupon Duration=', '');
+        const client = new Client({ connectionString: process.env.DATABASE_URL, ssl: true, });
+        client.connect();
+        client.query("UPDATE public.configure SET value= '" + cpid1 + "' WHERE id='6'", (err1, res) => {
+            if (err1) throw err1;
+                    client.end();
+                });
+        console.log("設定Setup Coupon Duration= " + cpid1 + " ==>OK");
+    }
+
     if (event.message.text.length>0) {
         //console.log('==================事件:記錄訊息==' + event.message.text);
         const client = new Client({ connectionString: process.env.DATABASE_URL, ssl: true, });
