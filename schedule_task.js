@@ -5,8 +5,6 @@ const { Client } = require('pg');
     
 //排程啟動
 var linebot = require('linebot');
-//var express = require('express');
-//var request = require('request');
 
 var bot = linebot({
     channelId: '1585073032',
@@ -22,12 +20,22 @@ const client = new Client({
 client.connect();
 
 var sql1 =
-    "SELECT *,date_part('day',age(gettime, now())) diffdays " +
-    ",(SELECT value FROM public.configure WHERE parameter = 'GetCoupon') msg " +
-    "FROM public.getcoupon WHERE " +
-    //"date_part('day', age(gettime, now())) > 0 and "+ //FOR 測試先MASK此行，不然可能沒資料
-    "date_part('day', age(gettime, now())) / " +
-    "(SELECT value:: integer FROM public.configure WHERE parameter = 'x') = 0 " +
+    //領取優惠卷
+    "SELECT lineid, date_part('day',age(gettime, now())) diffdays " +
+    ",(SELECT value FROM public.configure WHERE parameter = 'GetCoupon')+couponid msg FROM public.getcoupon WHERE " +
+    "date_part('day', age(gettime, now())) = (SELECT value:: integer FROM public.configure WHERE parameter = 'x') " +
+    //使用優惠卷
+    "union SELECT lineid, date_part('day',age(usetime, now())) diffdays " +
+    ",(SELECT value FROM public.configure WHERE parameter = 'UseCoupon')+couponid msg FROM public.usecoupon WHERE " +
+    "date_part('day', age(usetime, now())) = (SELECT value:: integer FROM public.configure WHERE parameter = 'x') " +
+    //加入
+    "union SELECT id lineid, date_part('day',age(addtime, now())) diffdays " +
+    ",(SELECT value FROM public.configure WHERE parameter = 'AddLine') msg FROM public.addline WHERE " +
+    "date_part('day', age(addtime, now())) = (SELECT value:: integer FROM public.configure WHERE parameter = 'x') " +
+    //使用優惠卷
+    "union SELECT lineid, date_part('day',age(clicktime, now())) diffdays " +
+    ",(SELECT value FROM public.configure WHERE parameter = 'UseCoupon')+url msg FROM public.clickurl WHERE " +
+    "date_part('day', age(clicktime, now())) = (SELECT value:: integer FROM public.configure WHERE parameter = 'x') " +
     "; ";
 console.log(sql1);
 
@@ -37,9 +45,9 @@ client.query(sql1, (err, res) => {
         
         bot.push(row.lineid, {
             type: 'text',
-            text: row.msg + row.couponid
+            text: row.msg 
         });
-        console.log('ok');
+        console.log('push ok==>' + row.lineid +' '+ row.msg);
     }
     client.end();
 });
