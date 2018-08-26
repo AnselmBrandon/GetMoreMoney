@@ -142,10 +142,21 @@ bot.on('message', function (event) {
         for (let row of res.rows) {
             duration=row.value;
         }
-        console.log('ok');
-         }
          client.end();
-//        });
+        );
+          
+          
+          ///////////////////
+           client.connect();
+        client.query(
+            'INSERT into public.getcoupon (lineid, gettime, couponid) VALUES($1, $2, $3) ',
+            [event.source.userId, new Date(), cpid],
+            function (err1, result) {
+                if (err1) throw err1;
+                client.end();
+            });
+          
+          ///////////////////
         
         var couponid= event.message.text.replace('coupon', '');
         event.reply({
