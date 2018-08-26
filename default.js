@@ -152,7 +152,7 @@ bot.on('message', function (event) {
                             {
                                 "type": "message",
                                 "label": "領取",
-                                "text": "領取"+
+                                "text": "領取"+test
                             }/*,
                                     {
                                         "type": "postback",
