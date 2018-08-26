@@ -137,15 +137,17 @@ bot.on('message', function (event) {
     ssl: true,
 });
 client.connect();
-var sql1 ="SELECT value FROM public.configure WHERE id ='"+"6"+"'";
+var sql1 ="SELECT value FROM public.configure WHERE id ='"+"6"+"';";
 
 console.log(sql1);
-
+var i=0;
 client.query(sql1, (err, res) => {
     if (err) throw err;
     for (let row of res.rows) {
-
+            i=i+1;
+            console.log(i);
             duration=row.value;
+        console.log(duration);
 
     }
     client.end();
