@@ -159,7 +159,7 @@ bot.on('message', function (event) {
                 "columns": [
                     {
                         //"thumbnailImageUrl": "https://example.com/bot/images/item2.jpg",
-                        "thumbnailImageUrl":"https://drive.google.com/open?id=1ibMBIJIjba-PbpW45w40_YTpXj5JIbLg",
+                        "thumbnailImageUrl":"http://i.imgur.com/qHRX6.jpg",
                         "imageBackgroundColor": "#000000",
                         "title": "優惠券",
                         "text": "有效期限  2018-08-10~2018-08-17",
