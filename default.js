@@ -64,7 +64,7 @@ bot.on('message', function (event) {
      
          
           console.log('==================事件:使用者傳送表情符號' + event.message.stickerId);
-        var cpid1 = 'stickerId'+event.message.stickerId;
+        var cpid1 = 'stickerId:'+event.message.stickerId;
         const client = new Client({ connectionString: process.env.DATABASE_URL, ssl: true, });
         client.connect();
         client.query(
