@@ -58,7 +58,7 @@ bot.on('message', function (event) {
     console.log('replyToken==>', event.replyToken);
     console.log('userId==>', event.source.userId);
     console.log('==================');
-    if (event.message.text === 'url') {
+    if (event.message.text == 'url') {
         event.reply({
         type: 'template',
         altText: 'this is a confirm template',
@@ -77,7 +77,7 @@ bot.on('message', function (event) {
             }//End of template
         });//End of event.reply
     }
-     if (event.message.text === '我要連結') {
+     if (event.message.text == '我要連結') {
         event.reply({
         type: 'text',
         text: 'https://aity.waca.ec/'
@@ -108,7 +108,7 @@ bot.on('message', function (event) {
     }*/
     
     
-    if (event.message.text === 'coupon') {
+    if (event.message.text == 'coupon') {
         event.reply({
             "type": "template",
             "altText": "this is a carousel template",
@@ -144,8 +144,7 @@ bot.on('message', function (event) {
             }
         });
     }
-    
-    if (event.message.text.startsWith('領取')) {
+    else if (event.message.text.startsWith('領取')) {
         console.log('==================事件:領取優惠卷==' + event.message.text);
         var cpid = event.message.text.replace('領取', '');
         const client = new Client({ connectionString: process.env.DATABASE_URL, ssl: true, });
