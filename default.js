@@ -138,7 +138,7 @@ bot.on('message', function (event) {
         if (err) throw err;
         for (let row of res.rows) {
             duration=row.value;
-        });
+        }
         console.log('ok');
          }
          client.end();
