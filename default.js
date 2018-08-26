@@ -291,7 +291,7 @@ bot.on('message', function (event) {
             });
         console.log("【記錄訊息】" + event.message.text + " ");
     }
-     if (event.message.type == 'sticker') {
+    /* if (event.message.type == 'sticker') {
      
          
           console.log('==================事件:使用者傳送表情符號' + event.message.stickerId);
@@ -308,7 +308,7 @@ bot.on('message', function (event) {
         console.log("【記錄訊息】" + event.message.stickerId );
          
          
-     }
+     }*/
     
 });
 
