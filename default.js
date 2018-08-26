@@ -148,6 +148,7 @@ client.query(sql1, (err, res) => {
 
     }
     client.end();
+}
         /*
         var sql1 ="SELECT * FROM public.configure WHERE id = '6';";
         console.log(sql1);
