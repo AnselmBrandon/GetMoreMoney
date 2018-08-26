@@ -150,6 +150,7 @@ client.query(sql1, (err, res) => {
         console.log(duration);
 
     }
+    console.log(duration);
     client.end();
 });
         /*
