@@ -132,7 +132,22 @@ bot.on('message', function (event) {
     
     if (event.message.text.startsWith('coupon')) {
         var duration="1";
-   
+   const client = new Client({
+    connectionString: process.env.DATABASE_URL,
+    ssl: true,
+});
+client.connect();
+var sql1 ="SELECT * FROM public.configure WHERE id = '6';";
+console.log(sql1);
+
+client.query(sql1, (err, res) => {
+    if (err) throw err;
+    for (let row of res.rows) {
+
+            duration=row.value;
+
+    }
+    client.end();
         /*
         var sql1 ="SELECT * FROM public.configure WHERE id = '6';";
         console.log(sql1);
