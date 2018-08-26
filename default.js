@@ -142,7 +142,7 @@ bot.on('message', function (event) {
         console.log('ok');
          }
          client.end();
-        });
+//        });
         
         var couponid= event.message.text.replace('coupon', '');
         event.reply({
