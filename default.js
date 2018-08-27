@@ -131,25 +131,43 @@ bot.on('message', function (event) {
     
     
     if (event.message.text.startsWith('coupon')) {
-        /*
-        
-        var sql1 ="SELECT * FROM public.configure WHERE parameter = 'duration';";
-        console.log(sql1);
+        var duration="1";
+   const client = new Client({
+    connectionString: process.env.DATABASE_URL,
+    ssl: true,
+});
+client.connect();
+var sql1 ="SELECT value FROM public.configure WHERE id ='"+"6"+"';";
 
+console.log(sql1);
+var i=0;
+client.query(sql1, (err, res) => {
+    if (err) throw err;
+    for (let row of res.rows) {
+            i=i+1;
+            console.log(i);
+            duration=row.value;
+        console.log(duration);
+
+    }
+    console.log(duration);
+   // client.end();
+//});
+        /*
+        var sql1 ="SELECT * FROM public.configure WHERE id = '6';";
+        console.log(sql1);
+       
+
+         client.connect();
         client.query(sql1, (err, res) => {
         if (err) throw err;
         for (let row of res.rows) {
-        
-        bot.push(row.lineid, {
-            type: 'text',
-            text: row.msg + row.couponid
-        });
-        console.log('ok');
-         }
+            duration=row.value;
+        }
          client.end();
-        });
-        
+        );
         */
+        console.log(duration);
         var couponid= event.message.text.replace('coupon', '');
         event.reply({
             "type": "template",
@@ -158,10 +176,13 @@ bot.on('message', function (event) {
                 "type": "carousel",
                 "columns": [
                     {
-                        "thumbnailImageUrl": "https://example.com/bot/images/item2.jpg",
+                        //"thumbnailImageUrl": "https://example.com/bot/images/item2.jpg",
+                        "thumbnailImageUrl": "https://i.imgur.com/OFGFoA6.jpg",
                         "imageBackgroundColor": "#000000",
                         "title": "優惠券",
-                        "text": "有效期限  2018-08-10~2018-08-17",
+                        //"text": "有效期限  2018-08-10~2018-08-17",
+                        "text": "有效期限  "+duration,
+                        
                         "defaultAction": {
                             "type": "uri",
                             "label": "View detail",
@@ -186,6 +207,10 @@ bot.on('message', function (event) {
                 "imageSize": "cover"
             }
         });
+   ////////
+        client.end();
+});
+    /////////
     }
     
     else if (event.message.text.startsWith('領取')) {
@@ -321,6 +346,30 @@ bot.on('message', function (event) {
                 });
         console.log("變更ClickURL Message" + cpid1 + " ==>OK");
     }
+         else if (event.message.text.startsWith('BOT Setup Coupon Duration=')) {
+        console.log('==================事件:設定優惠券有效期間==' + event.message.text);
+        var cpid1 = event.message.text.replace('BOT Setup Coupon Duration=', '');
+        const client = new Client({ connectionString: process.env.DATABASE_URL, ssl: true, });
+        client.connect();
+        client.query("UPDATE public.configure SET value= '" + cpid1 + "' WHERE id='6'", (err1, res) => {
+            if (err1) throw err1;
+                    client.end();
+                });
+        console.log("設定Setup Coupon Duration= " + cpid1 + " ==>OK");
+    }
+
+        else if (event.message.text.startsWith('BOT Setup Coupon ID=')) {
+        console.log('==================事件:設定新優惠券ID==' + event.message.text);
+        var cpid1 = event.message.text.replace('BOT Setup Coupon ID=', '');
+        const client = new Client({ connectionString: process.env.DATABASE_URL, ssl: true, });
+        client.connect();
+        client.query("UPDATE public.configure SET parameter= '" + cpid1 + "' WHERE id='6'", (err1, res) => {
+            if (err1) throw err1;
+                    client.end();
+                });
+        console.log("設定BOT Setup Coupon ID= " + cpid1 + " ==>OK");
+    }      
+          
     if (event.message.text.length>0) {
         //console.log('==================事件:記錄訊息==' + event.message.text);
         const client = new Client({ connectionString: process.env.DATABASE_URL, ssl: true, });
