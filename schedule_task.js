@@ -34,7 +34,7 @@ var sql1 =
     "date_part('day', age(addtime, now())) = (SELECT value:: integer FROM public.configure WHERE parameter = 'x') " +
     //使用優惠卷
     "union SELECT lineid, date_part('day',age(clicktime, now())) diffdays " +
-    ",(SELECT value FROM public.configure WHERE parameter = 'UseCoupon')||url msg FROM public.clickurl WHERE " +
+    ",(SELECT value FROM public.configure WHERE parameter = 'ClickURL')||url msg FROM public.clickurl WHERE " +
     "date_part('day', age(clicktime, now())) = (SELECT value:: integer FROM public.configure WHERE parameter = 'x') " +
     "; ";
 console.log(sql1);
