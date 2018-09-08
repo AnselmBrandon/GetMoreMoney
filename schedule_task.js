@@ -1,4 +1,4 @@
-﻿console.log('=====排程啟動=====');
+﻿console.log('=====排程啟動=====1');
 console.log(Date.now());
 const { Client } = require('pg');
 
